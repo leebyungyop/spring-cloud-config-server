@@ -1,0 +1,87 @@
+server:
+  servlet:
+    protocol: http://
+    base-url: localhost
+    context-path: /cms/shopping/
+    maxCookieCount: 100000
+    maxParameterCount: 10240
+    maxPostSize: 10200000
+    maxSavePostSize: 10240000
+    asyncTimeout: 120      
+    #context-parameters:
+    #session:
+      #tracking-modes:
+      #cookie:
+      #  max-age: 24 
+      #  comment: 
+      #  name: springboot-cms-solution
+  port: 8080
+  IP-ADDRESS: 127.0.0.1
+  #ssl.key-store=classpath:keystore.jks
+  #ssl.key-store-password=secret
+  #ssl.key-password=another-secret  
+  session-timeout: 600000
+  tomcat:
+    uri-encoding: UTF-8
+    #basedir: my-tomcat
+    #accesslog.enabled: true
+    #accesslog.pattern: %t %a "%r" %s (%D ms) 
+    #remote-ip-header: x-your-remote-ip-header
+    #protocol-header: x-your-protocol-header
+  #undertow.accesslog.enabled=true
+  #undertow.accesslog.pattern=%t %a "%r" %s (%D ms)
+  #jetty.accesslog.enabled=true
+  #jetty.accesslog.filename=/var/log/jetty-access.log    
+
+spring:
+  # IDENTITY
+  application:
+    name: springboot-cms-solution
+  #profile 설정을 안했을 시 active profile
+  profiles:
+    active: local
+    
+  servlet:
+    multipart:
+      maxFileSize: 100MB
+      maxRequestSize: 100MB   
+      max-file-size: 100MB
+      max-request-size: 100MB
+    session-timeout: 600000
+  # HTTP encoding (HttpEncodingProperties)
+  http:
+    encoding:
+      charset: UTF-8 # the encoding of HTTP requests/responses
+      enabled: true # enable http encoding support
+      force: true # force the configured encoding
+      force-request: true
+      force-response: true
+      
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/leebyungyop/spring-cloud-config-server
+
+  data:
+    rest:
+      max-page-size: 1024000
+    web:
+      pageable:
+        default-page-size: 1024000
+        max-page-size: 1024000
+      
+  security:
+    user:
+      name: lby2514
+      password: lby2514
+      roles: user
+    admin:
+      name: admin
+      password: admin
+      roles: admin
+    oauth2:
+      client:
+        client-id: lby2514
+        client-secret: lby2514
+
